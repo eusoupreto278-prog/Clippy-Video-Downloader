@@ -3,7 +3,7 @@ from yt_dlp import YoutubeDL
 import threading
 
 class Download:
-    def download_video(self, url, mp3, mkv):
+    def download(self, url, mp3, mkv):
         if 'www.youtube.com' in url:
             if mp3:
                 ydl_opts = {
@@ -36,6 +36,6 @@ class Download:
             print('[url]', url)
 
     def start_download(self, url, mp3, mkv):
-        t = threading.Thread(target=self.download_video, 
+        download_thread = threading.Thread(target=self.download, 
                             args=(url, mp3, mkv))
-        t.start()
+        download_thread.start()
